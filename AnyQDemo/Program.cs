@@ -43,7 +43,7 @@ namespace AnyQDemo {
 
             // before we send a job,clear the queue if
             // the /clear option is passed
-            if (args[0] == "/clear") {
+            if (args.Length > 0 && args[0] == "/clear") {
                 Console.WriteLine("Purging queue...");
                 listener.PurgeQueue(queueId);
             }
