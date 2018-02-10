@@ -41,6 +41,8 @@ namespace AnyQDemo {
                 QueueName = "Test Queue"
             }));
 
+            // before we send a job,clear the queue if
+            // the /clear option is passed
             if (args[0] == "/clear") {
                 Console.WriteLine("Purging queue...");
                 listener.PurgeQueue(queueId);
@@ -54,11 +56,13 @@ namespace AnyQDemo {
             // finally, we tell the JobQueueListener to listen for jobs
             listener.Listen();
 
+            // keep a count of the rest of the messages
             var count = 2;
             using (listener) { // don't forget to dispose of any JobQueueListeners when you're done with them
                 while (true) {
                     Thread.Sleep(3000);
-                    Console.WriteLine("Sending another job...");
+
+                    Console.WriteLine($"Sending job {count}...");
                     listener.SendJob(queueId, "test", new Payload {
                         Message = $"Job {count++}"
                     }, "test message");
