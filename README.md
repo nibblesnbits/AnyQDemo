@@ -8,6 +8,10 @@ When run, this demo will output to the console *Hello, AnyQ!* and *Hello, Again.
 
 This project also contains an example `IRequestSerializer`, the `JsonRequestSerializer`.  This class can be used in conjunction with [AnyQ.Formatters.Json](https://www.nuget.org/packages/AnyQ.Formatters.Json/) in any project.
 
+## Notes
+
+You may pass the `/clear` option to the command line to purge the queue on start.
+
 ## Building and Running
 
 Simply clone this repo, open in Visual Studio 2012 (or newer), and run.
