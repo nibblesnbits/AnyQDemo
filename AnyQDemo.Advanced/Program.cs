@@ -40,7 +40,7 @@ namespace AnyQDemo {
 
             // clear the queues so we have a clean starting point.
             listener.PurgeQueue(queueId);
-            listener.PurgeQueue(queueId + ":retry");
+            listener.PurgeQueue(queueId + ":retry");    
             listener.PurgeQueue(queueId + ":failed" );
 
             // then we send a job to the queue
