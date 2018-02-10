@@ -20,11 +20,12 @@ namespace AnyQDemo {
             return true;
         }
 
-        public override Task ProcessAsync(ProcessingRequest request, CancellationToken cancellationToken) {
+        public override async Task ProcessAsync(ProcessingRequest request, CancellationToken cancellationToken) {
             var payload = _payloadFormatter.Read<Payload>(request.JobRequest.Payload);
+            Console.WriteLine("Waiting 5 seconds...");
+            await Task.Delay(5000);
             Console.WriteLine(payload.Message);
             OnProcessingCompleted(request);
-            return Task.FromResult(false);
         }
     }
 }

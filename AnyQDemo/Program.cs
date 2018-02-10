@@ -1,6 +1,7 @@
 ﻿using AnyQ;
 using AnyQ.Formatters;
 using System;
+using System.Threading;
 
 namespace AnyQDemo {
     class Program {
@@ -43,9 +44,14 @@ namespace AnyQDemo {
             // finally, we tell the JobQueueListener to listen for jobs
             listener.Listen();
 
-            using (listener) {
-                // don't forget to dispose of any JobQueueListeners when you're done with them
-                Console.ReadLine();
+            using (listener) { // don't forget to dispose of any JobQueueListeners when you're done with them
+                while (true) {
+                    Thread.Sleep(3000);
+                    Console.WriteLine("Sending another job...");
+                    listener.SendJob(queueId, "test", new Payload {
+                        Message = "Hello, again."
+                    }, "test message");
+                }
             }
         }
     }
