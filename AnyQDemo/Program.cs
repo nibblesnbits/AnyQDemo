@@ -48,10 +48,11 @@ namespace AnyQDemo {
                 listener.PurgeQueue(queueId);
             }
 
-            // then we send 2 jobs to the queue
+            // then we send a job to the queue
             listener.SendJob(queueId, "test", new Payload {
-                Message = "Hello, AnyQ!"
-            }, "test message");
+                Message = "Hello, AnyQ!",
+                Index = 1
+            }, "Test Job 1");
 
             // finally, we tell the JobQueueListener to listen for jobs
             listener.Listen();
@@ -64,8 +65,10 @@ namespace AnyQDemo {
 
                     Console.WriteLine($"Sending job {count}...");
                     listener.SendJob(queueId, "test", new Payload {
-                        Message = $"Job {count++}"
-                    }, "test message");
+                        Message = $"Job {count}",
+                        Index = count
+                    }, $"Test Job {count}");
+                    count++;
                 }
             }
         }

@@ -17,13 +17,16 @@ namespace AnyQDemo {
         public override HandlerConfiguration Configuration => _handlerConfiguration;
 
         public override bool CanProcess(ProcessingRequest request) {
-            return true;
+            return request.JobRequest.Type == "test";
         }
 
         public override async Task ProcessAsync(ProcessingRequest request, CancellationToken cancellationToken) {
             var payload = _payloadFormatter.Read<Payload>(request.JobRequest.Payload);
             Console.WriteLine("Waiting 5 seconds...");
             await Task.Delay(5000);
+            if (payload.Index % 5 == 0) {
+                throw new Exception("Test Exception");
+            }
             Console.WriteLine(payload.Message);
             OnProcessingCompleted(request);
         }

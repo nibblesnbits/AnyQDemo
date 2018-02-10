@@ -11,4 +11,6 @@ if exist "%InstallDir%\MSBuild\15.0\Bin\MSBuild.exe" (
   start AnyQDemo\bin\Release\AnyQDemo.exe
   start AnyQDemo\bin\Release\AnyQDemo.exe
   start AnyQDemo\bin\Release\AnyQDemo.exe
+) else (
+  echo "Error: Could not find MSBuild."
 )
