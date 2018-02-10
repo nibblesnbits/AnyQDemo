@@ -6,7 +6,7 @@ A simple demo console app demonstrating the use of [AnyQ.Queues.Msmq](https://ww
 
 When run, this demo will output to the console *Hello, AnyQ!* and the begin generating a new job every 3 seconds, demonstrating data being sent to MSMQ, received by AnyQ, and passed to a Job Handler.  The `ConsoleStatusProvider` will also output the status of each of the jobs as they are being processed.
 
-This project also contains an example `IRequestSerializer`, the [JsonRequestSerializer](JsonRequestSerializer.cs).  This class can be used in conjunction with [AnyQ.Formatters.Json](https://www.nuget.org/packages/AnyQ.Formatters.Json/) in any project.
+This project also contains an example `IRequestSerializer`, the [JsonRequestSerializer](AnyQDemo/JsonRequestSerializer.cs).  This class can be used in conjunction with [AnyQ.Formatters.Json](https://www.nuget.org/packages/AnyQ.Formatters.Json/) in any project.
 
 ## Building and Running
 
