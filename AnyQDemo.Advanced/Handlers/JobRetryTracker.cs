@@ -29,7 +29,7 @@ namespace AnyQDemo.Handlers {
                 if (_condition(record)) {
                     if (_retries.TryRemove(jobName, out var removedRecord)) {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine($"Terminal failure for job '{jobName}' ({jobId}). Failed attempts: {removedRecord.Retries}.");
+                        Console.WriteLine($"Terminal failure for job '{jobName}'. Failed attempts: {removedRecord.Retries}.");
                         Console.ResetColor();
                     }
                     return true;
