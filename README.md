@@ -10,12 +10,10 @@ This project also contains an example `IRequestSerializer`, the [JsonRequestSeri
 
 ## Building and Running
 
-> Both this project and AnyQ target .NET 4.5.  Therefore you must have Visual Studio 2012 or higher in order to build and run this project.
+With Visual Studio 2012 or higher, simply open `AnyQDemo.sln` and press F5 to run.
 
 > If you have Visual Studio 2017 installed, you may run the demo in one step via the `rundemo-vs2017.bat` file.
 > To demo consuming a queue from multiple processes, run `runmultidemo-vs2017.bat`.
-
-With Visual Studio 2012 or higher, simply open `AnyQDemo.sln` and press F5 to run.
 
 ## Notes
 
