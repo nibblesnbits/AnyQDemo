@@ -1,11 +1,19 @@
 ﻿using AnyQ;
 using AnyQ.Formatters;
 using System;
+using System.Linq;
+using System.ServiceProcess;
 using System.Threading;
 
 namespace AnyQDemo {
     class Program {
         static void Main(string[] args) {
+
+            if (!IsMsmqEnabled()) {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Error: MSMQ is not running.");
+                Console.ReadLine();
+            }
 
             // First, we need an IPayloadFormatter.
             // This tells AnyQ how to format the data when inserting it into the queue
@@ -53,6 +61,12 @@ namespace AnyQDemo {
                     }, "test message");
                 }
             }
+        }
+
+        private static bool IsMsmqEnabled() {
+            return ServiceController.GetServices()
+                .FirstOrDefault(o => o.ServiceName == "MSMQ")
+                ?.Status == ServiceControllerStatus.Running;
         }
     }
 }
