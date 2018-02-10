@@ -41,23 +41,26 @@ namespace AnyQDemo {
                 QueueName = "Test Queue"
             }));
 
+            if (args[0] == "/clear") {
+                Console.WriteLine("Purging queue...");
+                listener.PurgeQueue(queueId);
+            }
+
             // then we send 2 jobs to the queue
             listener.SendJob(queueId, "test", new Payload {
                 Message = "Hello, AnyQ!"
-            }, "test message");
-            listener.SendJob(queueId, "test", new Payload {
-                Message = "Hello, again."
             }, "test message");
 
             // finally, we tell the JobQueueListener to listen for jobs
             listener.Listen();
 
+            var count = 2;
             using (listener) { // don't forget to dispose of any JobQueueListeners when you're done with them
                 while (true) {
                     Thread.Sleep(3000);
                     Console.WriteLine("Sending another job...");
                     listener.SendJob(queueId, "test", new Payload {
-                        Message = "Hello, again."
+                        Message = $"Job {count++}"
                     }, "test message");
                 }
             }
