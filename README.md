@@ -18,7 +18,3 @@ With Visual Studio 2012 or higher, simply open `AnyQDemo.sln` and press F5 to ru
 ## Notes
 
 You may pass the `/clear` option to the command line to purge the queue on start.
-
-## Building and Running
-
-Simply clone this repo, open in Visual Studio 2012 (or newer), and run.
