@@ -13,6 +13,7 @@ namespace AnyQDemo {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Error: MSMQ is not running.");
                 Console.ReadLine();
+                return;
             }
 
             // First, we need an IPayloadFormatter.
