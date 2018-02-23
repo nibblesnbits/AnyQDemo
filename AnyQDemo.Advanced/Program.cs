@@ -3,9 +3,9 @@ using AnyQ.Formatters;
 using System;
 using System.Linq;
 using System.ServiceProcess;
-using System.Threading;
 
-namespace AnyQDemo {
+namespace AnyQDemo
+{
     class Program {
         static void Main(string[] args) {
 

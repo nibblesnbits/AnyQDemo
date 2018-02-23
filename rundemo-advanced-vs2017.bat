@@ -1,5 +1,7 @@
 @echo off
 
+tools\nuget.exe restore AnyQDemo.Advanced.sln
+
 for /f "usebackq tokens=1* delims=: " %%i in (`.\tools\vswhere -latest -requires Microsoft.Component.MSBuild`) do (
   if /i "%%i"=="installationPath" set InstallDir=%%j
 )
